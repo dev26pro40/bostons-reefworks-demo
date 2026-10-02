@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Boston's ReefWorks — V2 Spotlight</title>
+<meta name="description" content="Nano saltwater reef tanks, built in Pawnee, Illinois. Seven models, under five gallons each.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='%2304070f'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%2367e8f9'/%3E%3C/svg%3E">
+<style>
+  :root{
+    --bg:#04070f; --bg2:#070d1a; --ink:#eef4fa; --muted:#93a7bd; --faint:#5b6b80;
+    --accent:#5eead4; --violet:#a78bfa; --line:rgba(148,184,220,.14);
+    --serif:Didot,"Bodoni MT","Playfair Display",Georgia,serif;
+    --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  .hero{position:relative;min-height:100svh;display:flex;flex-direction:column;overflow:hidden}
+  .aurora{position:absolute;inset:-20%;pointer-events:none;filter:blur(70px);opacity:.5}
+  .aurora i{position:absolute;border-radius:50%;animation:drift 14s ease-in-out infinite alternate}
+  .aurora i:nth-child(1){width:44vw;height:44vw;left:8%;top:6%;background:rgba(20,184,166,.20)}
+  .aurora i:nth-child(2){width:36vw;height:36vw;right:6%;top:34%;background:rgba(124,93,250,.16);animation-delay:-5s}
+  .aurora i:nth-child(3){width:30vw;height:30vw;left:30%;bottom:4%;background:rgba(14,116,144,.22);animation-delay:-9s}
+  @keyframes drift{from{transform:translate(0,0) scale(1)}to{transform:translate(6vw,-4vh) scale(1.15)}}
+  .hero-vignette{position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 90% at 50% 40%, transparent 50%, rgba(0,0,0,.6) 100%)}
+  .hero-inner{position:relative;z-index:2;display:flex;flex-direction:column;min-height:100svh}
+  nav.top{display:flex;align-items:center;justify-content:space-between;padding:1.1rem 1.25rem}
+  .brand{font-family:var(--serif);font-size:1.05rem;color:var(--ink);text-decoration:none}
+  .brand span{color:var(--accent)}
+  .nav-links{display:flex;gap:1.25rem;align-items:center}
+  .nav-links a{color:var(--muted);text-decoration:none;font-size:.85rem}
+  .nav-cta{border:1px solid var(--line);border-radius:999px;padding:.5rem 1rem;color:var(--ink)!important;font-size:.8rem!important}
+  .hero-copy{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:0 1.25rem}
+  .kicker{color:var(--accent);font-size:.75rem;letter-spacing:.3em;text-transform:uppercase;margin-bottom:1.25rem}
+  h1{font-family:var(--serif);font-weight:400;font-size:clamp(2.8rem,12vw,6rem);line-height:1.02;margin-bottom:1.25rem}
+  h1 em{font-style:italic;background:linear-gradient(100deg,var(--accent),var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .lede{color:var(--muted);font-size:clamp(1rem,4.2vw,1.2rem);line-height:1.65;max-width:34rem;margin-bottom:2rem}
+  .btn{display:inline-block;text-decoration:none;border-radius:999px;padding:.95rem 2rem;font-size:.95rem}
+  .btn-solid{background:var(--accent);color:#04222b;font-weight:600}
+  section{padding:5rem 1.25rem;position:relative}
+  .wrap{max-width:60rem;margin:0 auto}
+  .section-kicker{color:var(--accent);font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;margin-bottom:1rem;text-align:center}
+  h2{font-family:var(--serif);font-weight:400;font-size:clamp(1.9rem,7.5vw,3rem);text-align:center;margin-bottom:.75rem}
+  .section-lede{color:var(--muted);text-align:center;max-width:34rem;margin:0 auto 2.5rem;line-height:1.7}
+
+  /* carousel */
+  .carousel{position:relative;border:1px solid var(--line);border-radius:1.4rem;overflow:hidden;background:rgba(8,13,26,.7)}
+  .slides{position:relative;min-height:26rem}
+  .slide{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    padding:2.5rem 1.5rem;text-align:center;opacity:0;transform:translateX(40px);transition:opacity .5s ease,transform .5s ease;pointer-events:none}
+  .slide.active{opacity:1;transform:none;pointer-events:auto;position:relative}
+  .slide .tank{width:11rem;height:8.5rem;position:relative;border:1px solid rgba(94,234,212,.4);border-radius:.5rem;margin-bottom:1.75rem;
+    background:linear-gradient(160deg, rgba(20,184,166,.28), rgba(4,7,15,.1) 65%);
+    box-shadow:0 0 50px rgba(94,234,212,.16) inset, 0 0 30px rgba(94,234,212,.10)}
+  .slide .tank::before,.slide .tank::after{content:"";position:absolute;border-radius:50%;filter:blur(8px)}
+  .slide .tank::before{width:3rem;height:3rem;left:16%;top:28%;background:rgba(45,212,191,.55)}
+  .slide .tank::after{width:2rem;height:2rem;right:20%;bottom:24%;background:rgba(167,139,250,.5)}
+  .slide .num{color:var(--accent);font-size:.72rem;letter-spacing:.3em;margin-bottom:.6rem}
+  .slide h3{font-family:var(--serif);font-weight:400;font-size:1.9rem;margin-bottom:.6rem}
+  .slide p{color:var(--muted);font-size:.92rem;max-width:26rem;line-height:1.65}
+  .car-controls{display:flex;align-items:center;justify-content:center;gap:1.1rem;padding:.25rem 0 1.25rem}
+  .car-btn{width:2.6rem;height:2.6rem;border-radius:50%;flex:0 0 auto;
+    border:1px solid var(--line);background:rgba(4,7,15,.7);color:var(--ink);font-size:1.15rem;cursor:pointer}
+  .car-btn:hover{border-color:var(--accent)}
+  .dots{display:flex;gap:.55rem;justify-content:center}
+  .dots button{width:.6rem;height:.6rem;border-radius:50%;border:none;background:rgba(148,184,220,.25);cursor:pointer;padding:0}
+  .dots button.on{background:var(--accent);transform:scale(1.25)}
+  .count{text-align:center;color:var(--faint);font-size:.78rem;letter-spacing:.2em;padding-bottom:1.25rem}
+
+  #contact .contact-card{border:1px solid var(--line);border-radius:1.25rem;padding:2.5rem 1.5rem;text-align:center;
+    background:radial-gradient(80% 120% at 50% 0%, rgba(20,184,166,.12), transparent 70%)}
+  #contact p.lede2{color:var(--muted);margin-bottom:2rem;line-height:1.7}
+  .cta-row{display:flex;flex-wrap:wrap;gap:.9rem;justify-content:center}
+  .btn-ghost{border:1px solid var(--line);color:var(--ink)}
+  footer{border-top:1px solid var(--line);padding:2rem 1.25rem 5rem;text-align:center;color:var(--faint);font-size:.82rem}
+  .switcher{position:fixed;bottom:1rem;left:50%;transform:translateX(-50%);z-index:50;display:flex;gap:.25rem;
+    background:rgba(4,7,15,.85);border:1px solid var(--line);border-radius:999px;padding:.3rem;backdrop-filter:blur(8px)}
+  .switcher a{color:var(--muted);text-decoration:none;font-size:.75rem;letter-spacing:.08em;padding:.45rem .9rem;border-radius:999px}
+  .switcher a.on{background:var(--accent);color:#04222b;font-weight:600}
+  @media (min-width:56rem){
+    nav.top{padding:1.4rem 2.5rem}
+    section{padding:7rem 2.5rem}
+    .slides{min-height:30rem}
+  }
+  @media (prefers-reduced-motion:reduce){.aurora i{animation:none}.slide{transition:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="vendor/react.min.js"></script>
+<script src="vendor/react-dom.min.js"></script>
+<script src="vendor/htm.js"></script>
+<script>
+const { useState, useEffect, useRef } = React;
+const html = htm.bind(React.createElement);
+
+const MODELS = [1,2,3,4,5,6,7].map(n => ({
+  num: "Model " + String(n).padStart(2,"0"),
+  name: "Name coming soon",
+  note: "Specs and photos coming soon. This is where each tank gets its own spotlight: size, what's inside, and the price."
+}));
+
+function Switcher(){
+  const vs = [['index.html','V1'],['v2.html','V2'],['v3.html','V3'],['v4.html','V4']];
+  const cur = (location.pathname.split('/').pop() || 'index.html');
+  return html`<nav className="switcher" aria-label="Variations">
+    ${vs.map(([href,label]) => html`<a key=${href} href=${href} className=${href===cur?'on':''}>${label}</a>`)}
+  </nav>`;
+}
+
+function Carousel(){
+  const [i, setI] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const n = MODELS.length;
+  const go = d => setI((i + d + n) % n);
+  useEffect(() => {
+    if(paused) return;
+    const t = setInterval(() => setI(v => (v+1)%n), 6000);
+    return () => clearInterval(t);
+  }, [paused, n]);
+  const touchX = useRef(null);
+  const onTouchStart = e => { touchX.current = e.touches[0].clientX; };
+  const onTouchEnd = e => {
+    if(touchX.current == null) return;
+    const dx = e.changedTouches[0].clientX - touchX.current;
+    if(Math.abs(dx) > 40) go(dx < 0 ? 1 : -1);
+    touchX.current = null;
+  };
+  return html`<div className="carousel"
+      onMouseEnter=${() => setPaused(true)} onMouseLeave=${() => setPaused(false)}
+      onTouchStart=${onTouchStart} onTouchEnd=${onTouchEnd}>
+    <div className="slides">
+      ${MODELS.map((m, k) => html`<div key=${m.num} className=${"slide" + (k===i?" active":"")} aria-hidden=${k!==i}>
+        <div className="tank"></div>
+        <p className="num">${m.num}</p>
+        <h3>${m.name}</h3>
+        <p>${m.note}</p>
+      </div>`)}
+    </div>
+    <div className="car-controls">
+      <button className="car-btn car-prev" onClick=${() => go(-1)} aria-label="Previous model">‹</button>
+      <div className="dots" role="tablist">
+        ${MODELS.map((m,k) => html`<button key=${m.num} className=${k===i?'on':''} onClick=${() => setI(k)} aria-label=${"Go to "+m.num}></button>`)}
+      </div>
+      <button className="car-btn car-next" onClick=${() => go(1)} aria-label="Next model">›</button>
+    </div>
+    <p className="count">${String(i+1).padStart(2,"0")} / ${String(n).padStart(2,"0")}</p>
+  </div>`;
+}
+
+function App(){
+  return html`<${React.Fragment}>
+    <header className="hero">
+      <div className="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+      <div className="hero-vignette" aria-hidden="true"></div>
+      <div className="hero-inner">
+        <nav className="top">
+          <a className="brand" href="#">Boston\u2019s <span>ReefWorks</span></a>
+          <div className="nav-links">
+            <a href="#models">Models</a>
+            <a href="tel:+12177413237" className="nav-cta">Call us</a>
+          </div>
+        </nav>
+        <div className="hero-copy">
+          <p className="kicker">Pawnee, Illinois</p>
+          <h1>Meet <em>the seven.</em></h1>
+          <p className="lede">Seven nano reef tanks. Under five gallons each. One of them belongs on your desk.</p>
+          <a className="btn btn-solid" href="#models">Browse the lineup</a>
+        </div>
+      </div>
+    </header>
+
+    <section id="models"><div className="wrap">
+      <p className="section-kicker">The collection</p>
+      <h2>One spotlight at a time.</h2>
+      <p className="section-lede">Swipe or tap through the seven models. Real names and photos land here next.</p>
+      <${Carousel}/>
+    </div></section>
+
+    <section id="contact"><div className="wrap"><div className="contact-card">
+      <p className="section-kicker">Get in touch</p>
+      <h2>Talk to us about your tank.</h2>
+      <p className="lede2">Questions about a model, or want first word when the sale goes live?</p>
+      <div className="cta-row">
+        <a className="btn btn-solid" href="tel:+12177413237">(217) 741-3237</a>
+        <a className="btn btn-ghost" href="mailto:bostonsreefworks@outlook.com">Email us</a>
+      </div>
+    </div></div></section>
+
+    <footer>
+      <p>Boston\u2019s ReefWorks \u00B7 Pawnee, Illinois \u00B7 \u00A9 2026</p>
+    </footer>
+    <${Switcher}/>
+  </${React.Fragment}>`;
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(html`<${App}/>`);
+</script>
+</body>
+</html>
