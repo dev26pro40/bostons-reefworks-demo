@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Boston's ReefWorks — Nano Reef Aquariums</title>
+<meta name="description" content="Nano saltwater reef tanks, built in Pawnee, Illinois. Seven models, under five gallons each.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='%2304070f'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%2367e8f9'/%3E%3C/svg%3E">
+<style>
+  :root{
+    --bg:#04070f; --bg2:#060b16; --ink:#e9f2f9; --muted:#8fa3b8; --faint:#5b6b80;
+    --accent:#67e8f9; --line:rgba(148,184,220,.14);
+    --serif:Didot,"Bodoni MT","Playfair Display",Georgia,"Times New Roman",serif;
+    --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  ::selection{background:rgba(103,232,249,.25)}
+  .hero{position:relative;min-height:100svh;display:flex;flex-direction:column;overflow:hidden}
+  #particles{position:absolute;inset:0;width:100%;height:100%;display:block}
+  .hero-glow{position:absolute;inset:0;pointer-events:none;background:
+    radial-gradient(60% 45% at 70% 30%, rgba(14,116,144,.20), transparent 70%),
+    radial-gradient(50% 40% at 20% 75%, rgba(30,58,138,.22), transparent 70%)}
+  .hero-vignette{position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 90% at 50% 40%, transparent 55%, rgba(0,0,0,.55) 100%)}
+  .grain{position:absolute;inset:0;pointer-events:none;opacity:.05;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E")}
+  .hero-inner{position:relative;z-index:2;display:flex;flex-direction:column;min-height:100svh}
+  nav.top{display:flex;align-items:center;justify-content:space-between;padding:1.1rem 1.25rem}
+  .brand{font-family:var(--serif);font-size:1.05rem;color:var(--ink);text-decoration:none}
+  .brand span{color:var(--accent)}
+  .nav-links{display:flex;gap:1.25rem;align-items:center}
+  .nav-links a{color:var(--muted);text-decoration:none;font-size:.85rem;letter-spacing:.04em}
+  .nav-links a:hover{color:var(--ink)}
+  .nav-cta{border:1px solid var(--line);border-radius:999px;padding:.5rem 1rem;color:var(--ink)!important;font-size:.8rem!important}
+  .nav-cta:hover{border-color:var(--accent)}
+  .hero-copy{flex:1;display:flex;flex-direction:column;justify-content:center;padding:0 1.25rem;max-width:44rem}
+  .kicker{color:var(--accent);font-size:.75rem;letter-spacing:.28em;text-transform:uppercase;margin-bottom:1.25rem}
+  h1{font-family:var(--serif);font-weight:400;font-size:clamp(2.6rem,11vw,5.5rem);line-height:1.04;letter-spacing:-.01em;margin-bottom:1.25rem}
+  h1 em{font-style:italic;color:var(--accent)}
+  .lede{color:var(--muted);font-size:clamp(1rem,4.2vw,1.2rem);line-height:1.65;max-width:32rem;margin-bottom:2rem}
+  .cta-row{display:flex;flex-wrap:wrap;gap:.9rem}
+  .btn{display:inline-block;text-decoration:none;border-radius:999px;padding:.95rem 1.9rem;font-size:.95rem;letter-spacing:.02em;transition:transform .2s ease,box-shadow .2s ease}
+  .btn-solid{background:var(--accent);color:#04222b;font-weight:600}
+  .btn-solid:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(103,232,249,.35)}
+  .btn-ghost{border:1px solid var(--line);color:var(--ink)}
+  .btn-ghost:hover{border-color:var(--accent)}
+  .scroll-hint{position:relative;z-index:2;text-align:center;padding:0 0 1.6rem;color:var(--faint);font-size:.72rem;letter-spacing:.3em;text-transform:uppercase}
+  .scroll-hint::after{content:"";display:block;width:1px;height:2.6rem;margin:.8rem auto 0;background:linear-gradient(var(--faint),transparent);animation:drop 2.2s ease-in-out infinite}
+  @keyframes drop{0%,100%{opacity:.3}50%{opacity:1}}
+  section{position:relative;padding:5rem 1.25rem}
+  .wrap{max-width:68rem;margin:0 auto}
+  .section-kicker{color:var(--accent);font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;margin-bottom:1rem}
+  h2{font-family:var(--serif);font-weight:400;font-size:clamp(1.9rem,7.5vw,3.2rem);line-height:1.12;margin-bottom:1rem}
+  .section-lede{color:var(--muted);line-height:1.7;max-width:36rem;margin-bottom:2.5rem}
+  #models{background:linear-gradient(var(--bg),var(--bg2))}
+  .model-rail{display:flex;gap:1rem;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 1.25rem 1rem;margin:0 -1.25rem;scrollbar-width:none}
+  .model-rail::-webkit-scrollbar{display:none}
+  .model-card{flex:0 0 78%;scroll-snap-align:start;border:1px solid var(--line);border-radius:1.1rem;overflow:hidden;background:rgba(10,17,30,.6);backdrop-filter:blur(6px)}
+  .model-thumb{height:11rem;position:relative;overflow:hidden}
+  .tank{position:absolute;inset:1.6rem 2.2rem;border:1px solid rgba(103,232,249,.35);border-radius:.4rem;
+    background:linear-gradient(160deg, rgba(14,116,144,.35), rgba(4,7,15,.1) 60%);
+    box-shadow:0 0 40px rgba(34,211,238,.18) inset, 0 0 24px rgba(34,211,238,.12)}
+  .tank::before,.tank::after{content:"";position:absolute;border-radius:50%;filter:blur(6px)}
+  .tank::before{width:2.6rem;height:2.6rem;left:18%;top:30%;background:rgba(45,212,191,.5)}
+  .tank::after{width:1.8rem;height:1.8rem;right:22%;bottom:26%;background:rgba(251,113,133,.4)}
+  .model-body{padding:1.25rem 1.25rem 1.4rem}
+  .model-num{color:var(--faint);font-size:.72rem;letter-spacing:.24em;margin-bottom:.4rem}
+  .model-name{font-family:var(--serif);font-size:1.35rem;margin-bottom:.5rem}
+  .model-note{color:var(--muted);font-size:.88rem;line-height:1.6}
+  #story{text-align:center;background:var(--bg2)}
+  #story h2{max-width:40rem;margin:0 auto 1.25rem}
+  #story p{color:var(--muted);line-height:1.75;max-width:34rem;margin:0 auto}
+  #contact{background:linear-gradient(var(--bg2),var(--bg))}
+  .contact-card{border:1px solid var(--line);border-radius:1.25rem;padding:2.5rem 1.5rem;text-align:center;
+    background:radial-gradient(80% 120% at 50% 0%, rgba(14,116,144,.14), transparent 70%)}
+  .contact-card h2{margin-bottom:.75rem}
+  .contact-card p{color:var(--muted);line-height:1.7;margin-bottom:2rem;max-width:30rem;margin-left:auto;margin-right:auto}
+  footer{border-top:1px solid var(--line);padding:2rem 1.25rem;display:flex;flex-direction:column;gap:.6rem;align-items:center;text-align:center;color:var(--faint);font-size:.82rem}
+  .switcher{position:fixed;bottom:1rem;left:50%;transform:translateX(-50%);z-index:50;display:flex;gap:.25rem;
+    background:rgba(4,7,15,.85);border:1px solid var(--line);border-radius:999px;padding:.3rem;backdrop-filter:blur(8px)}
+  .switcher a{color:var(--muted);text-decoration:none;font-size:.75rem;letter-spacing:.08em;padding:.45rem .9rem;border-radius:999px}
+  .switcher a.on{background:var(--accent);color:#04222b;font-weight:600}
+  @media (min-width:56rem){
+    nav.top{padding:1.4rem 2.5rem}
+    .hero-copy{padding:0 2.5rem}
+    section{padding:7rem 2.5rem}
+    .model-rail{display:grid;grid-template-columns:repeat(auto-fill,minmax(15rem,1fr));overflow:visible;margin:0;padding:0}
+    .model-card{flex:none}
+    .contact-card{padding:4rem 3rem}
+    footer{flex-direction:row;justify-content:space-between;text-align:left}
+  }
+  @media (prefers-reduced-motion:reduce){.scroll-hint::after{animation:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="vendor/react.min.js"></script>
+<script src="vendor/react-dom.min.js"></script>
+<script src="vendor/htm.js"></script>
+<script src="vendor/three.min.js"></script>
+<script>
+const { useState, useEffect, useRef } = React;
+const html = htm.bind(React.createElement);
+
+const MODELS = [1,2,3,4,5,6,7].map(n => ({
+  num: "Model " + String(n).padStart(2,"0"),
+  name: "Name coming soon",
+  note: "Specs and photos coming soon."
+}));
+
+function ParticleField(){
+  const ref = useRef(null);
+  useEffect(() => {
+    const canvas = ref.current;
+    let renderer;
+    try { renderer = new THREE.WebGLRenderer({canvas, alpha:true, antialias:false}); }
+    catch(e){ return; }
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.75));
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(60, 1, 0.1, 100);
+    camera.position.z = 14;
+    const COUNT = 420;
+    const positions = new Float32Array(COUNT*3);
+    const aSize = new Float32Array(COUNT), aPhase = new Float32Array(COUNT),
+          aSpeed = new Float32Array(COUNT), aTint = new Float32Array(COUNT);
+    for(let i=0;i<COUNT;i++){
+      positions[i*3]=(Math.random()-.5)*34; positions[i*3+1]=(Math.random()-.5)*22; positions[i*3+2]=(Math.random()-.5)*12;
+      aSize[i]=.5+Math.random()*2.2; aPhase[i]=Math.random()*Math.PI*2;
+      aSpeed[i]=.12+Math.random()*.5;
+      const r=Math.random(); aTint[i]= r<.62?0 : r<.88?1 : 2;
+    }
+    const geo = new THREE.BufferGeometry();
+    geo.setAttribute('position', new THREE.BufferAttribute(positions,3));
+    geo.setAttribute('aSize', new THREE.BufferAttribute(aSize,1));
+    geo.setAttribute('aPhase', new THREE.BufferAttribute(aPhase,1));
+    geo.setAttribute('aSpeed', new THREE.BufferAttribute(aSpeed,1));
+    geo.setAttribute('aTint', new THREE.BufferAttribute(aTint,1));
+    const mat = new THREE.ShaderMaterial({
+      transparent:true, depthWrite:false, blending:THREE.AdditiveBlending,
+      uniforms:{ uTime:{value:0} },
+      vertexShader:`
+        attribute float aSize; attribute float aPhase; attribute float aSpeed; attribute float aTint;
+        uniform float uTime; varying float vAlpha; varying float vTint;
+        void main(){
+          vec3 p = position;
+          p.y = mod(p.y + uTime * aSpeed + 11.0, 22.0) - 11.0;
+          p.x += sin(uTime * 0.35 + aPhase) * 1.4;
+          p.z += cos(uTime * 0.28 + aPhase * 1.7) * 0.8;
+          vec4 mv = modelViewMatrix * vec4(p, 1.0);
+          gl_Position = projectionMatrix * mv;
+          float twinkle = 0.55 + 0.45 * sin(uTime * (0.6 + aSpeed) + aPhase * 3.0);
+          vAlpha = twinkle * smoothstep(-16.0, -6.0, mv.z) * 0.85;
+          vTint = aTint;
+          gl_PointSize = aSize * (140.0 / -mv.z);
+        }`,
+      fragmentShader:`
+        varying float vAlpha; varying float vTint;
+        void main(){
+          float d = length(gl_PointCoord - 0.5);
+          float disc = smoothstep(0.5, 0.05, d);
+          vec3 col = vTint < 0.5 ? vec3(0.12,0.23,0.54) : (vTint < 1.5 ? vec3(0.40,0.91,0.98) : vec3(0.98,0.44,0.52));
+          gl_FragColor = vec4(col, disc * vAlpha);
+        }`
+    });
+    const points = new THREE.Points(geo, mat);
+    scene.add(points);
+    let mx=0,my=0,cx=0,cy=0,raf=0;
+    const onMove = e => { mx=(e.clientX/window.innerWidth-.5)*2; my=(e.clientY/window.innerHeight-.5)*2; };
+    window.addEventListener('pointermove', onMove, {passive:true});
+    const resize = () => {
+      const hero = canvas.parentElement;
+      renderer.setSize(hero.clientWidth, hero.clientHeight, false);
+      camera.aspect = hero.clientWidth/hero.clientHeight;
+      camera.updateProjectionMatrix();
+    };
+    window.addEventListener('resize', resize); resize();
+    const clock = new THREE.Clock();
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const tick = () => {
+      mat.uniforms.uTime.value = clock.getElapsedTime();
+      cx += (mx*1.6-cx)*.04; cy += (-my*1.0-cy)*.04;
+      camera.position.x=cx; camera.position.y=cy; camera.lookAt(0,0,0);
+      renderer.render(scene,camera);
+      raf = requestAnimationFrame(tick);
+    };
+    if(reduce){ mat.uniforms.uTime.value=8; renderer.render(scene,camera); }
+    else tick();
+    return () => { cancelAnimationFrame(raf); window.removeEventListener('pointermove',onMove);
+      window.removeEventListener('resize',resize); geo.dispose(); mat.dispose(); renderer.dispose(); };
+  }, []);
+  return html`<canvas id="particles" ref=${ref} aria-hidden="true"></canvas>`;
+}
+
+function Switcher(){
+  const vs = [['index.html','V1'],['v2.html','V2'],['v3.html','V3'],['v4.html','V4']];
+  const cur = (location.pathname.split('/').pop() || 'index.html');
+  return html`<nav className="switcher" aria-label="Variations">
+    ${vs.map(([href,label]) => html`<a key=${href} href=${href} className=${href===cur?'on':''}>${label}</a>`)}
+  </nav>`;
+}
+
+function ModelCard({m}){
+  return html`<article className="model-card">
+    <div className="model-thumb"><div className="tank"></div></div>
+    <div className="model-body">
+      <p className="model-num">${m.num}</p>
+      <p className="model-name">${m.name}</p>
+      <p className="model-note">${m.note}</p>
+    </div>
+  </article>`;
+}
+
+function App(){
+  return html`<${React.Fragment}>
+    <header className="hero">
+      <${ParticleField}/>
+      <div className="hero-glow" aria-hidden="true"></div>
+      <div className="hero-vignette" aria-hidden="true"></div>
+      <div className="grain" aria-hidden="true"></div>
+      <div className="hero-inner">
+        <nav className="top">
+          <a className="brand" href="#">Boston\u2019s <span>ReefWorks</span></a>
+          <div className="nav-links">
+            <a href="#models">Models</a>
+            <a href="#contact" className="nav-cta">Contact</a>
+          </div>
+        </nav>
+        <div className="hero-copy">
+          <p className="kicker">Pawnee, Illinois</p>
+          <h1>A living reef,<br/>at <em>desk scale.</em></h1>
+          <p className="lede">Seven nano reef tanks. Under five gallons each. Built for desks, shelves, and small spaces.</p>
+          <div className="cta-row">
+            <a className="btn btn-solid" href="#models">See the models</a>
+            <a className="btn btn-ghost" href="tel:+12177413237">Call (217) 741-3237</a>
+          </div>
+        </div>
+        <p className="scroll-hint">Dive in</p>
+      </div>
+    </header>
+
+    <section id="models"><div className="wrap">
+      <p className="section-kicker">The collection</p>
+      <h2>Seven tanks. One for every corner.</h2>
+      <p className="section-lede">Names, specs, and photos are on the way. This is the shape of the lineup.</p>
+      <div className="model-rail">${MODELS.map(m => html`<${ModelCard} key=${m.num} m=${m}/>`)} </div>
+    </div></section>
+
+    <section id="story"><div className="wrap">
+      <p className="section-kicker">Why nano</p>
+      <h2>Small tanks. Serious reefs.</h2>
+      <p>A full saltwater reef does not need a full-size tank. Ours stay under five gallons, so a living reef fits where you actually live and work.</p>
+    </div></section>
+
+    <section id="contact"><div className="wrap"><div className="contact-card">
+      <p className="section-kicker">Get in touch</p>
+      <h2>Talk to us about your tank.</h2>
+      <p>Questions about a model, or want first word when the sale goes live? Call or send an email.</p>
+      <div className="cta-row" style=${{justifyContent:'center'}}>
+        <a className="btn btn-solid" href="tel:+12177413237">(217) 741-3237</a>
+        <a className="btn btn-ghost" href="mailto:bostonsreefworks@outlook.com">bostonsreefworks@outlook.com</a>
+      </div>
+    </div></div></section>
+
+    <footer>
+      <a className="brand" href="#">Boston\u2019s <span>ReefWorks</span></a>
+      <p>Pawnee, Illinois</p>
+      <p>\u00A9 2026 Boston\u2019s ReefWorks</p>
+    </footer>
+    <${Switcher}/>
+  </${React.Fragment}>`;
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(html`<${App}/>`);
+</script>
+</body>
+</html>
